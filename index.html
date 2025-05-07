@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="description" content="مجتمع پایتخت - شهر تخصصی لوازم یدکی خودروهای سنگین" />
+  <title>مجتمع پایتخت | خانه</title>
+  <link rel="stylesheet" href="assets/css/style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+</head>
+<body>
+  <!-- Header -->
+  <header class="header">
+    <div class="container">
+      <a href="index.html" class="logo">
+        <h1>مجتمع پایتخت</h1>
+        <span class="subtitle">شهر تخصصی لوازم یدکی خودروهای سنگین</span>
+      </a>
+      <button class="mobile-menu-btn">
+        <i class="fas fa-bars"></i>
+      </button>
+      <nav>
+        <ul>
+          <li><a href="index.html#home" class="active">خانه</a></li>
+          <li><a href="index.html#about">درباره ما</a></li>
+          <li><a href="units.html">واحدها</a></li>
+          <li><a href="index.html#contact">تماس با ما</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section id="home" class="hero">
+    <div class="hero-content">
+      <h1>شهر لوازم یدکی خودروهای سنگین پایتخت</h1>
+      <img src="assets/images/paytakht.png" alt="مجتمع پایتخت" class="hero-img" />
+      <p>بزرگترین مرکز تخصصی لوازم یدکی خودروهای سنگین در تهران</p>
+      <div class="hero-features">
+        <div class="feature">
+          <i class="fas fa-map-marker-alt"></i>
+          <span>موقعیت استراتژیک</span>
+        </div>
+        <div class="feature">
+          <i class="fas fa-building"></i>
+          <span>1000 واحد تجاری</span>
+      </div>
+        <div class="feature">
+          <i class="fas fa-shield-alt"></i>
+          <span>امنیت 24 ساعته</span>
+        </div>
+      </div>
+      <a href="#units" class="btn">مشاهده واحدها</a>
+    </div>
+  </section>
+
+  <!-- Features -->
+  <section class="features">
+    <div class="container">
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-icon">
+          <i class="fas fa-subway"></i>
+          </div>
+          <div class="feature-content">
+          <h3>مترو چهار دانگه</h3>
+            <p>دسترسی آسان به مترو چهاردانگه</p>
+          </div>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">
+          <i class="fas fa-building"></i>
+          </div>
+          <div class="feature-content">
+          <h3>1000 واحد تجاری</h3>
+            <p>مجموعه‌ای کامل از واحدهای تجاری و اداری</p>
+          </div>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">
+          <i class="fas fa-concierge-bell"></i>
+          </div>
+          <div class="feature-content">
+            <h3>امکانات رفاهی</h3>
+            <p>فضای سبز، اینترنت پرسرعت و امنیت 24 ساعته</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Units -->
+  <section id="units" class="units">
+    <div class="container">
+      <h2 class="section-title">واحدهای موجود</h2>
+      <div class="filter">
+        <select id="typeFilter">
+          <option value="all">همه واحدها</option>
+          <option value="commercial">تجاری</option>
+          <option value="office">اداری</option>
+        </select>
+      </div>
+      <div class="units-grid">
+        <div class="card" onclick="window.location.href='units.html'">
+          <div class="card-badge">ویژه</div>
+          <img src="assets/images/2.jpg" alt="واحد تجاری 101">
+          <div class="card-content">
+            <h4>واحد تجاری 101</h4>
+            <div class="unit-specs">
+              <p><i class="fas fa-ruler-combined"></i> متراژ کل: 120 متر مربع</p>
+              <p><i class="fas fa-building"></i> طبقه: 1</p>
+              <p><i class="fas fa-info-circle"></i> وضعیت: فروخته شده</p>
+              <p><i class="fas fa-map-marker-alt"></i> موقعیت: رو به خیابان اصلی</p>
+              <p><i class="fas fa-parking"></i> پارکینگ: 2 جایگاه</p>
+            </div>
+            <div class="unit-amenities">
+              <span><i class="fas fa-elevator"></i> آسانسور</span>
+              <span><i class="fas fa-camera"></i> دوربین</span>
+              <span><i class="fas fa-shield-alt"></i> امنیت</span>
+            </div>
+            <div class="card-buttons">
+              <a href="units.html" class="btn btn-primary">مشاهده همه واحدها</a>
+              <a href="unit-details.html" class="btn btn-secondary">جزئیات بیشتر</a>
+            </div>
+          </div>
+        </div>
+      
+        <div class="card" onclick="window.location.href='units.html'">
+          <div class="card-badge">جدید</div>
+          <img src="assets/images/2.jpg" alt="واحد اداری 201">
+          <div class="card-content">
+            <h4>واحد اداری 201</h4>
+            <div class="unit-specs">
+              <p><i class="fas fa-ruler-combined"></i> متراژ کل: 150 متر مربع</p>
+              <p><i class="fas fa-building"></i> طبقه: 2</p>
+              <p><i class="fas fa-info-circle"></i> وضعیت: در حال فروش</p>
+              <p><i class="fas fa-map-marker-alt"></i> موقعیت: رو به حیاط مرکزی</p>
+              <p><i class="fas fa-parking"></i> پارکینگ: 3 جایگاه</p>
+            </div>
+            <div class="unit-amenities">
+              <span><i class="fas fa-elevator"></i> آسانسور</span>
+              <span><i class="fas fa-camera"></i> دوربین</span>
+              <span><i class="fas fa-shield-alt"></i> امنیت</span>
+            </div>
+            <div class="card-buttons">
+              <a href="units.html" class="btn btn-primary">مشاهده همه واحدها</a>
+              <a href="unit-details.html" class="btn btn-secondary">جزئیات بیشتر</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section id="about" class="about">
+    <div class="container">
+      <h2 class="section-title">درباره مجتمع پایتخت</h2>
+      <div class="about-content">
+        <div class="about-text">
+          <p>مجتمع تجاری اداری پایتخت واقع در تهران، آیت الله سعیدی (جاده ساوه) می باشد. شهر لوازم یدکی خودرو پایتخت در زمینی به مساحت 20000 متر مربع ساخته و شامل 1000 واحد تجاری و اداری است.</p>
+          <div class="about-video">
+            <video autoplay muted loop playsinline>
+              <source src="assets/mov/m.mp4" type="video/mp4">
+              مرورگر شما از پخش ویدیو پشتیبانی نمی‌کند.
+            </video>
+          </div>
+          <div class="amenities">
+            <h3>امکانات مجتمع</h3>
+            <ul>
+              <li><i class="fas fa-check"></i> پارکینگ اختصاصی</li>
+              <li><i class="fas fa-check"></i> آسانسور</li>
+              <li><i class="fas fa-check"></i> سیستم امنیتی</li>
+              <li><i class="fas fa-check"></i> اینترنت پرسرعت</li>
+              <li><i class="fas fa-check"></i> فضای سبز</li>
+              <li><i class="fas fa-check"></i> دوربین مداربسته</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact" class="contact">
+    <div class="container">
+      <h2 class="section-title">تماس با ما</h2>
+      <div class="contact-content">
+        <div class="contact-info">
+          <div class="info-card">
+            <i class="fas fa-phone"></i>
+            <h3>تلفن</h3>
+            <p>۰۲۱-۵۵۲۵۲۵۴</p>
+            <p>۰۹۱۲-۴۶۰۰۰۵۶</p>
+          </div>
+          <div class="info-card">
+            <i class="fas fa-envelope"></i>
+            <h3>ایمیل</h3>
+            <p>info@paytakhtcomplex.com</p>
+          </div>
+          <div class="info-card">
+            <i class="fas fa-map-marker-alt"></i>
+            <h3>آدرس</h3>
+            <p>جاده ساوه (آیت الله سعیدی)، چهار دانگه، جنب پل شاتره، مجتمع پایتخت</p>
+          </div>
+          <div class="info-card">
+            <i class="fas fa-clock"></i>
+            <h3>ساعات کاری</h3>
+            <p>شنبه تا چهارشنبه: ۸ صبح تا ۸ شب</p>
+            <p>پنجشنبه: ۸ صبح تا ۴ عصر</p>
+            <p>جمعه: تعطیل</p>
+          </div>
+          </div>
+        <div class="map-container">
+          <iframe 
+            src="https://balad.ir/embed?p=4igfiidZmt423C" 
+            title="مشاهده «مجتمع تجاری پایتخت» روی نقشه بلد" 
+            width="100%" 
+            height="450" 
+            frameborder="0" 
+            style="border:0;" 
+            allowfullscreen="" 
+            aria-hidden="false" 
+            tabindex="0">
+          </iframe>
+          </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-section">
+          <h3>دسترسی سریع</h3>
+          <ul>
+            <li><a href="#home">خانه</a></li>
+            <li><a href="#about">درباره ما</a></li>
+            <li><a href="#units">واحدها</a></li>
+            <li><a href="#contact">تماس با ما</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h3>تماس با ما</h3>
+          <p><i class="fas fa-map-marker-alt"></i> جاده ساوه (آیت الله سعیدی)، چهار دانگه، جنب پل شاتره، مجتمع پایتخت</p>
+          <p><i class="fas fa-phone"></i> ۰۲۱-۵۵۲۵۲۵۴</p>
+          <p><i class="fas fa-phone"></i> ۰۹۱۲-۴۶۰۰۰۵۶</p>
+          <p><i class="fas fa-envelope"></i> info@paytakhtcomplex.com</p>
+        </div>
+        <div class="footer-section">
+          <h3>ساعات کاری</h3>
+          <p>شنبه تا چهارشنبه: ۸ صبح تا ۸ شب</p>
+          <p>پنجشنبه: ۸ صبح تا ۴ عصر</p>
+          <p>جمعه: تعطیل</p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2024 مجتمع پایتخت - تمامی حقوق محفوظ است</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/js/app.js"></script>
+</body>
+</html>

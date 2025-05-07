@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="مجتمع تجاری اداری پایتخت - مشاهده و جستجوی واحدها">
+    <title>واحدها | مجتمع تجاری اداری پایتخت</title>
+    
+    <!-- Preload Critical Assets -->
+    <link rel="preload" href="assets/css/style.css" as="style">
+    <link rel="preload" href="assets/js/app.js" as="script">
+    <link rel="preload" href="assets/fonts/Vazirmatn-Regular.woff2" as="font" type="font/woff2" crossorigin>
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <!-- Fonts -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;700&display=swap">
+    <style>
+        /* Logo Styles */
+        .logo {
+            text-decoration: none;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 10px 0;
+        }
+
+        .logo h1 {
+            font-size: 2.8rem;
+            margin: 0;
+            color: #1a237e;
+            font-weight: 800;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+            letter-spacing: -1px;
+            background: linear-gradient(45deg, #1a237e, #3949ab);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-family: 'Vazirmatn', sans-serif;
+        }
+
+        .logo .subtitle {
+            font-size: 1.1rem;
+            color: #666;
+            margin-top: 5px;
+            font-weight: 500;
+        }
+
+        /* Video Styles */
+        .main-video {
+            width: 100%;
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            margin: 20px 0;
+        }
+
+        /* Mobile Menu Styles */
+        .mobile-menu {
+            display: none;
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 85%;
+            height: 100vh;
+            background: #fff;
+            z-index: 1000;
+            transition: right 0.3s ease;
+            box-shadow: -2px 0 5px rgba(0,0,0,0.1);
+            padding: 20px;
+        }
+
+        .mobile-menu.active {
+            right: 0;
+        }
+
+        .mobile-menu-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .mobile-menu-close {
+            background: none;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+            color: #1a237e;
+            padding: 5px;
+        }
+
+        .mobile-menu ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .mobile-menu ul li {
+            margin: 0;
+            border-bottom: 1px solid #f5f5f5;
+        }
+
+        .mobile-menu ul li a {
+            color: #333;
+            text-decoration: none;
+            font-size: 18px;
+            display: block;
+            padding: 15px 0;
+            transition: color 0.3s ease;
+            font-weight: 500;
+        }
+
+        .mobile-menu ul li a:hover,
+        .mobile-menu ul li a.active {
+            color: #1a237e;
+        }
+
+        .overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            z-index: 999;
+            backdrop-filter: blur(3px);
+        }
+
+        .overlay.active {
+            display: block;
+        }
+
+        @media (max-width: 768px) {
+            .main-nav {
+                display: none;
+            }
+
+            .menu-toggle {
+                display: block;
+                background: none;
+                border: none;
+                padding: 10px;
+                cursor: pointer;
+            }
+
+            .hamburger {
+                display: flex;
+                flex-direction: column;
+                gap: 6px;
+            }
+
+            .hamburger span {
+                display: block;
+                width: 25px;
+                height: 2px;
+                background: #1a237e;
+                transition: all 0.3s ease;
+            }
+
+            .menu-toggle.active .hamburger span:nth-child(1) {
+                transform: rotate(45deg) translate(6px, 6px);
+            }
+
+            .menu-toggle.active .hamburger span:nth-child(2) {
+                opacity: 0;
+            }
+
+            .menu-toggle.active .hamburger span:nth-child(3) {
+                transform: rotate(-45deg) translate(6px, -6px);
+            }
+
+            .units-grid {
+                grid-template-columns: 1fr;
+                padding: 10px;
+            }
+
+            .search-container {
+                flex-direction: column;
+            }
+
+            .search-box {
+                width: 100%;
+                margin-bottom: 10px;
+            }
+
+            .filter-container {
+                width: 100%;
+            }
+        }
+
+        /* Additional styles for unit cards */
+        .units-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+            padding: 20px 0;
+        }
+
+        .unit-card {
+            background: #fff;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .unit-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .unit-image {
+            width: 100%;
+            height: 200px;
+            overflow: hidden;
+        }
+
+        .unit-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .unit-info {
+            padding: 15px;
+        }
+
+        .unit-info h3 {
+            margin: 0 0 10px 0;
+            font-size: 18px;
+            color: #333;
+        }
+
+        .unit-specs {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 15px;
+            color: #666;
+            font-size: 14px;
+        }
+
+        .unit-specs span {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .btn-details {
+            display: inline-block;
+            padding: 8px 15px;
+            background: #007bff;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 4px;
+            transition: background 0.3s ease;
+        }
+
+        .btn-details:hover {
+            background: #0056b3;
+        }
+
+        @media (max-width: 768px) {
+            .units-grid {
+                grid-template-columns: 1fr;
+                padding: 10px;
+            }
+
+            .unit-card {
+                margin-bottom: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <a href="index.html" class="logo">
+                <img src="assets/images/logo.png" alt="مجتمع پایتخت">
+            </a>
+            
+            <button class="menu-toggle" aria-label="منو">
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </button>
+
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="index.html">صفحه اصلی</a></li>
+                    <li><a href="units.html" class="active">واحدها</a></li>
+                    <li><a href="about.html">درباره ما</a></li>
+                    <li><a href="contact.html">تماس با ما</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu">
+        <div class="mobile-menu-header">
+            <a href="index.html" class="logo">
+                <h1>مجتمع پایتخت</h1>
+                <span class="subtitle">شهر تخصصی لوازم یدکی خودروهای سنگین</span>
+            </a>
+            <button class="mobile-menu-close">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <ul>
+            <li><a href="index.html"><i class="fas fa-home"></i> صفحه اصلی</a></li>
+            <li><a href="units.html" class="active"><i class="fas fa-building"></i> واحدها</a></li>
+            <li><a href="about.html"><i class="fas fa-info-circle"></i> درباره ما</a></li>
+            <li><a href="contact.html"><i class="fas fa-envelope"></i> تماس با ما</a></li>
+        </ul>
+    </div>
+    <div class="overlay"></div>
+
+    <!-- Search Section -->
+    <section class="search-section">
+        <div class="search-container">
+            <div class="search-box">
+                <input type="text" placeholder="جستجو در واحدها...">
+                <button type="button">
+                    <i class="fas fa-search"></i>
+                </button>
+            </div>
+            <div class="filter-container">
+                <div class="filter">
+                    <select id="typeFilter">
+                        <option value="all">همه واحدها</option>
+                        <option value="commercial">واحدهای تجاری</option>
+                        <option value="office">واحدهای اداری</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="container">
+        <div id="unitsGrid" class="units-grid">
+            <!-- Units will be loaded here -->
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-info">
+                    <h3>مجتمع تجاری اداری پایتخت</h3>
+                    <p>آدرس: تهران، منطقه 22، خیابان دریاچه چیتگر، خیابان هفتم، پلاک 123</p>
+                    <p>تلفن: 021-12345678</p>
+                    <p>موبایل: 09123456789</p>
+                    <p>ایمیل: info@paytakht.com</p>
+                </div>
+                <div class="footer-links">
+                    <h4>دسترسی سریع</h4>
+                    <ul>
+                        <li><a href="index.html">صفحه اصلی</a></li>
+                        <li><a href="units.html">واحدها</a></li>
+                        <li><a href="about.html">درباره ما</a></li>
+                        <li><a href="contact.html">تماس با ما</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 1403 مجتمع تجاری اداری پایتخت. تمامی حقوق محفوظ است.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="assets/js/app.js" defer></script>
+    <script>
+        // Mobile Menu Toggle
+        document.addEventListener('DOMContentLoaded', function() {
+            const menuToggle = document.querySelector('.menu-toggle');
+            const mobileMenu = document.querySelector('.mobile-menu');
+            const overlay = document.querySelector('.overlay');
+            const closeButton = document.querySelector('.mobile-menu-close');
+
+            menuToggle.addEventListener('click', function() {
+                mobileMenu.classList.add('active');
+                overlay.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            });
+
+            function closeMenu() {
+                mobileMenu.classList.remove('active');
+                overlay.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+
+            closeButton.addEventListener('click', closeMenu);
+            overlay.addEventListener('click', closeMenu);
+
+            // Close menu when clicking on a link
+            const mobileMenuLinks = mobileMenu.querySelectorAll('a');
+            mobileMenuLinks.forEach(link => {
+                link.addEventListener('click', closeMenu);
+            });
+
+            // Load and display units
+            const units = [
+                {
+                    id: 1,
+                    title: 'واحد تجاری 101',
+                    type: 'commercial',
+                    area: '120 متر مربع',
+                    floor: '1',
+                    image: 'assets/images/2.jpg',
+                    link: 'unit1-details.html'
+                },
+                {
+                    id: 2,
+                    title: 'واحد تجاری 201',
+                    type: 'commercial',
+                    area: '150 متر مربع',
+                    floor: '2',
+                    image: 'assets/images/2.jpg',
+                    link: 'unit-201.html'
+                },
+                {
+                    id: 3,
+                    title: 'واحد اداری 301',
+                    type: 'office',
+                    area: '100 متر مربع',
+                    floor: '3',
+                    image: 'assets/images/2.jpg',
+                    link: 'unit3-details.html'
+                },
+                {
+                    id: 4,
+                    title: 'واحد تجاری 401',
+                    type: 'commercial',
+                    area: '130 متر مربع',
+                    floor: '4',
+                    image: 'assets/images/2.jpg',
+                    link: 'unit4-details.html'
+                },
+                {
+                    id: 5,
+                    title: 'واحد اداری 501',
+                    type: 'office',
+                    area: '110 متر مربع',
+                    floor: '5',
+                    image: 'assets/images/2.jpg',
+                    link: 'unit5-details.html'
+                },
+                {
+                    id: 6,
+                    title: 'واحد تجاری 601',
+                    type: 'commercial',
+                    area: '140 متر مربع',
+                    floor: '6',
+                    image: 'assets/images/2.jpg',
+                    link: 'unit6-details.html'
+                }
+            ];
+
+            const unitsGrid = document.getElementById('unitsGrid');
+            const typeFilter = document.getElementById('typeFilter');
+            const searchInput = document.querySelector('.search-box input');
+
+            function createUnitCard(unit) {
+                return `
+                    <div class="unit-card" data-type="${unit.type}">
+                        <div class="unit-image">
+                            <img src="${unit.image}" alt="${unit.title}">
+                        </div>
+                        <div class="unit-info">
+                            <h3>${unit.title}</h3>
+                            <div class="unit-specs">
+                                <span><i class="fas fa-ruler-combined"></i> ${unit.area}</span>
+                                <span><i class="fas fa-building"></i> طبقه ${unit.floor}</span>
+                            </div>
+                            <a href="${unit.link}" class="btn-details">مشاهده جزئیات</a>
+                        </div>
+                    </div>
+                `;
+            }
+
+            function filterUnits() {
+                const selectedType = typeFilter.value;
+                const searchTerm = searchInput.value.toLowerCase();
+                
+                const filteredUnits = units.filter(unit => {
+                    const matchesType = selectedType === 'all' || unit.type === selectedType;
+                    const matchesSearch = unit.title.toLowerCase().includes(searchTerm);
+                    return matchesType && matchesSearch;
+                });
+
+                unitsGrid.innerHTML = filteredUnits.map(unit => createUnitCard(unit)).join('');
+            }
+
+            // Initial load
+            filterUnits();
+
+            // Event listeners for filtering
+            typeFilter.addEventListener('change', filterUnits);
+            searchInput.addEventListener('input', filterUnits);
+        });
+    </script>
+</body>
+</html>
